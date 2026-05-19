@@ -4,6 +4,10 @@ const successNotification = () => {
   const success = document.querySelector(".success");
   console.log(errors);
 
+  // converts the set or collection "errors" to an Array called "All_errors"
+  const all_errors = [...errors];
+  console.log(all_errors);
+
   // conditions within a loop (did not work) 👇
 
   // errors.forEach((value) => {
@@ -13,12 +17,17 @@ const successNotification = () => {
   // });
   // ----------------------------------------👆
   if (
-    errors[0].textContent == "" &&
-    errors[1].textContent == "" &&
-    errors[2].textContent == "" &&
-    errors[3].textContent == "" &&
-    errors[4].textContent == "" &&
-    errors[5].textContent == ""
+    // checks all the elements in the array
+    all_errors.every((error) => error.textContent == "")
+
+    // checks the elements individually
+
+    // errors[0].textContent == "" &&
+    // errors[1].textContent == "" &&
+    // errors[2].textContent == "" &&
+    // errors[3].textContent == "" &&
+    // errors[4].textContent == "" &&
+    // errors[5].textContent == ""
   ) {
     success.style.transform = "translateY(-10%)";
   } else {
@@ -121,8 +130,7 @@ button1.addEventListener("click", (btnclick) => {
     button2.setAttribute("class", "");
     btn_image[1].style.display = "none";
   }
-}
-);
+});
 
 button2.addEventListener("click", (btnclick) => {
   // select button 2
@@ -147,8 +155,7 @@ consent.addEventListener("click", () => {
 
   if (consentGiven.className == "") {
     consentGiven.classList.add("display-image");
-  } 
-  else {
+  } else {
     consentGiven.classList.remove("display-image");
   }
 });
