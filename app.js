@@ -59,6 +59,12 @@ const validateform = () => {
     firstname.classList.add("invalid");
   }
 
+  // Added changes to Firstname validation
+  firstname.addEventListener("input", () => {
+    firstname.classList.remove("invalid");
+    firstname_err.textContent = "";
+  });
+
   // lastname Validation
   const lastname = document.querySelector(".lastname");
   const lastname_err = document.querySelector(".lastname-err");
@@ -68,6 +74,12 @@ const validateform = () => {
     lastname.classList.add("invalid");
   }
 
+  // Added changes to lastname validation
+  lastname.addEventListener("input", () => {
+    lastname.classList.remove("invalid");
+    lastname_err.textContent = "";
+  });
+
   // Email Verification
   const email = document.querySelector(".email");
   const email_err = document.querySelector(".email-err");
@@ -76,11 +88,27 @@ const validateform = () => {
     email.classList.add("invalid");
   }
 
+  // Added changes to Email validation
+  email.addEventListener("input", () => {
+    email.classList.remove("invalid");
+    email_err.textContent = "";
+  });
+
   // button Verification
   const button_err = document.querySelector(".button-err");
   if (!(button1.className == "selected" || button2.className == "selected")) {
     button_err.textContent = "Please select a query type";
   }
+
+  // Added changes to button  validation
+
+  button1.addEventListener("click", () => {
+    button_err.textContent = "";
+  });
+
+  button2.addEventListener("click", () => {
+    button_err.textContent = "";
+  });
 
   // Message Verification
   const message = document.querySelector(".message");
@@ -90,12 +118,20 @@ const validateform = () => {
     message_err.textContent = "This field is required";
   }
 
+  // Added changes to message validation
+  message.addEventListener("input", () => {
+    message.classList.remove("invalid");
+    message_err.textContent = "";
+  });
+
   // Consent Verification
   const consent_err = document.querySelector(".consent-err");
   if (consentGiven.className == "") {
     consent_err.textContent =
       " To submit this form, please consent to being contacted";
   }
+
+
 
   // loop within a condition (did not work) 👇
 
@@ -149,14 +185,18 @@ button2.addEventListener("click", (btnclick) => {
 // CONSENT SELECTION
 const consent = document.querySelector(".consent-click");
 const consentGiven = document.querySelector(".consent-click img");
+const consent_err = document.querySelector(".consent-err");
 
 consent.addEventListener("click", () => {
   // Select or Deselect Consent
 
   if (consentGiven.className == "") {
     consentGiven.classList.add("display-image");
+    consent_err.textContent = ""; // Added changes to consent validation
   } else {
     consentGiven.classList.remove("display-image");
+    consent_err.textContent =
+      " To submit this form, please consent to being contacted"; // Added changes to consent validation
   }
 });
 
